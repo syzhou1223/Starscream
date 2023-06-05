@@ -91,11 +91,6 @@ public class FoundationHTTPHandler: HTTPHandler {
                 return true
             }
             
-            if let cfURL = CFHTTPMessageCopyRequestURL(response) {
-                let url = cfURL.takeRetainedValue() as URL
-                headers["requestURL"] = url.absoluteString
-            }
-            
             delegate?.didReceiveHTTP(event: .success(headers))
             return true
         }

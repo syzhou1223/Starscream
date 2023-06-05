@@ -88,6 +88,12 @@ public class FoundationHTTPServerHandler: HTTPServerHandler {
                     headers[key] = value
                 }
             }
+            
+            if let cfURL = CFHTTPMessageCopyRequestURL(response) {
+                let url = cfURL.takeRetainedValue() as URL
+                headers["originURL"] = url.absoluteString
+            }
+            
             delegate?.didReceive(event: .success(headers))
             return true
         }
