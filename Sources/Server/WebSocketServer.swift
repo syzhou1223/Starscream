@@ -97,7 +97,7 @@ public class ServerConnection: Connection, HTTPServerDelegate, FramerEventClient
     public var onEvent: ((ConnectionEvent) -> Void)?
     public weak var delegate: ConnectionDelegate?
     private let id: String
-    var uuid: String {
+    public var uuid: String {
         return id
     }
     
